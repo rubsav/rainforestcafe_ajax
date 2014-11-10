@@ -1,3 +1,4 @@
 <h1>Products (<%= @products.length %>)</h1>
-<% @products each do |product| %>
-<p> <%= product.name %>, <%= product.description %>, <%=prodcut.price_in_cents %> </p>
+<% @products.each do |product| %>
+<p> <%= product.name %>, <%= product.description %>, <%= product.price_in_cents %> </p>
+<% end %>
