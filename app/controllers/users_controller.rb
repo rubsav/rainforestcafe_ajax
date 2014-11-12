@@ -12,8 +12,19 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-  def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name)
+  def show
+    @user = User.find(params[:id])
   end
+
+  def destroy
+   @user = User.find(params[:id])
+   @user.destroy
+   session[:user_id] = nil
+   redirect_to products_url
+  end
+
+ private
+ def user_params
+  params.require(:user).permit(:email, :password, :password_confirmation, :name)
+end
 end

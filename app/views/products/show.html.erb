@@ -1,5 +1,6 @@
 <%= link_to "Back to Products", products_url %>
-<p> <%= @product.name %>, <%= @product.description %>, <%= @product.formatted_price %> </p>
+<h2> <%= @product.name %> </h2>
+<p><%= @product.description %>, <%= @product.formatted_price %> </p>
 
 <% if current_user %>
 
