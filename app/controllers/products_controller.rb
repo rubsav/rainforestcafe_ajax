@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 	before_filter :ensure_logged_in, only: [:show]
- 
+	
 	def index
 		@products = if params[:search]
 			Product.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
@@ -8,10 +8,11 @@ class ProductsController < ApplicationController
 			Product.all
 		end
 
-		if request.xhr?
-      		render @products
-    	end
-    end
+		respond_to do |format|
+			format.html
+			format.js
+		end
+	end
 
 	def show
 		@product = Product.find(params[:id])
