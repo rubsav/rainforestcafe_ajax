@@ -13,8 +13,9 @@
 	<% if flash[:alert] %>
 	<p id="alert"><%= flash[:alert] %></p>
 	<% end %>
-
+	<div>
 	<%= yield %>
+	</div>
 
 	<div class="userinfo">
 		<% if current_user %>
