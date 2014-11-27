@@ -1,10 +1,24 @@
-<%= link_to product_path(product.id) do %>
-	<h2>
-	  <%= number_to_currency(product.formatted_price) %>
-	  <%= product.name %>
-	</h2>
-<% end %>
+<%= link_to "Add a product", new_product_path %>
 
-<!-- keeps the description to 100 characters or less -->
+<!-- renders a helpful message with numbers of displayed vs. total entries -->
+<h1>Products <small><%= page_entries_info @products %></small></h1>
 
-<p><%= truncate(product.description, length: 100) %></p>
+<hr/>
+
+<ul>
+	<% @products.each do |product| %>
+	<%= link_to product_path(product.id) do %>
+	<h4>
+		<%= number_to_currency(product.formatted_price) %>
+		<%= product.name %>
+	</h4>
+	<% end %>
+
+	<!-- keeps the description to 100 characters or less -->
+
+	<p><%= truncate(product.description, length: 100) %></p>
+	<% end %>
+</ul>
+
+<!-- outputs several pagination links such as « First ‹ Prev ... 2 3 4 5 6 7 8 9 10 ... Next › Last » -->
+<%= paginate @products %>
