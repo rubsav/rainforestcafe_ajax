@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 			Product.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
 		else
 			Product.order('products.created_at DESC')
-		end.page(params[:page])
+		end.page(params[:page]) #assists in paginating pages
 		
 
 		respond_to do |format|
