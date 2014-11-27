@@ -1,36 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title><%= content_for?(:title) ? yield(:title) : "Rainforest" %></title>
-
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= csrf_meta_tags %>
-  </head>
-
-  <body>
-
+<html>
+<head>
+  <title>Rainforest - now with AJAX!</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="nav">
+    <h1><%= link_to "Rainforest", products_path %></h1>
+    <div class="userinfo">
+      <% if current_user %>
+        Signed in as <%= current_user.name %>. <%= link_to "Log out", session_path("current"), method: :delete %>
+      <% else %>
+        <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+      <% end %>
+    </div>
+  </div>
+  <div class="container">
     <% if flash[:notice] %>
-	<p id="notice"><%= flash[:notice] %></p>
-	<% end %>
-	<% if flash[:alert] %>
-	<p id="alert"><%= flash[:alert] %></p>
-	<% end %>
-	<div>
-	<%= yield %>
-	</div>
+      <p id="notice"><%= flash[:notice] %></p>
+    <% end %>
+    <% if flash[:alert] %>
+      <p id="alert"><%= flash[:alert] %></p>
+    <% end %>
 
-	<div class="userinfo">
-		<% if current_user %>
-		Signed in as <%= current_user.name %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
-		<% else %>
-		<%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
-		<% end %>
-	</div>
+  <%= yield %>
+  </div>
 
-    <%= javascript_include_tag "application" %>
-  </body>
+</body>
 </html>
