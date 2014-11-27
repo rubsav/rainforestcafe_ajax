@@ -9,13 +9,18 @@
 	</div>
 </div>
 
+<%= link_to "Add a product", new_product_path %>
 
+<!-- renders a helpful message with numbers of displayed vs. total entries -->
+<h1>Products <small><%= page_entries_info @products %></small></h1>
 
-<div>
-	<h3>Products (<%= @products.length %>)</h3>
-</div>
+<hr/>
 
-<div id="products">
-	<%= render @products || "There are no products available." %>
-</div>
+<ul>
+	<div id="products">
+		<%= render @products %>
+	</div>
+</ul>
 
+<!-- outputs several pagination links such as « First ‹ Prev ... 2 3 4 5 6 7 8 9 10 ... Next › Last » -->
+<%= paginate @products %>
