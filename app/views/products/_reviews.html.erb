@@ -1,12 +1,14 @@
-<div id="review-list">
-  <% @product.reviews.each do |review| %>
-    <p>
-      <%= review.comment %>
-      <br>
-      <% if review.user != nil %>
-        <em> by <%= review.user.name %></em>
-        Added on: <%= review.created_at %>
-      <% end %>
-    </p>
+<% @product.reviews.each do |review| %>
+<div class= 'review'>
+  
+  <p class="comment">
+    <%= review.comment %>
+  </p>
+
+  <div class="poster">
+    <% if review.user != nil %>
+    <em> Posted by <%= review.user.name %> on: <%= review.created_at %></em>
     <% end %>
+  </div>
 </div>
+<% end %>
