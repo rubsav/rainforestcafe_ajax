@@ -1,4 +1,4 @@
-<div class="large-12 columns">
+ <div class="large-12 columns">
 	<div class="row collapse">
 		<div class="small-2 columns">
 			<%= form_tag products_path, method: :get, authentication: false, id: 'search-form' do %>
@@ -23,4 +23,4 @@
 </ul>
 
 <!-- outputs several pagination links such as « First ‹ Prev ... 2 3 4 5 6 7 8 9 10 ... Next › Last » -->
-<%= paginate @products %>
+<div id="products-pagination"> <%= paginate @products %> </div>
