@@ -1,8 +1,13 @@
 
-<% if params[:page] %>
-$('#products').append("<%= j(render @products) %>"); 
-<% else %>
-$('#products').html("<%= j(render @products) %>");
-<% end %>
-$('.pagination').replaceWith("<%= j(paginate @products)%>")
+// <% if params[:page] %>
+// $('#products').append("<%= j(render @products) %>"); 
+// <% else %>
+// $('#products').html("<%= j(render @products) %>");
+// <% end %>
+// $('#products-pagination').replaceWith("<%= j(paginate @products)%>")
 
+//  
+
+$('#products').append("<%= j(render @products) %>");
+
+$('#products-pagination').html("<%= j(paginate @products)%>");
