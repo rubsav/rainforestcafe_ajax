@@ -1,8 +1,6 @@
-<% if current_user %>
-
 <h4>Reviews for <%= @product.name %></h4>
 
-	<% @product.reviews.each do |review| %>
+	<% if review.id.present? %>
 	<div class= 'review'>
 
 		<p class="comment">
@@ -16,6 +14,3 @@
 		</div>
 	</div>
 	<% end %>
-<% else %>
-	<p>Please <%= link_to "log in", new_session_path %> to add a review.</p>
-<% end %>
